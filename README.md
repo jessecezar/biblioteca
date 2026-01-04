@@ -86,8 +86,3 @@ curl -X POST http://localhost:8080/livro/cadastrar \
 **Estrutura**
 - `src/main/java` — código-fonte (controllers, services, repositories, models)
 - `src/main/resources/static` — arquivos estáticos (HTML, CSS, JS) para o front-end
-
-
----
-Se quiser, eu posso também gerar um README em inglês ou criar um `docker-compose` para facilitar a execução com MySQL.
-"# biblioteca" 
