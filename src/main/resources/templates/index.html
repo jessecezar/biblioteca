@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Biblioteca - Frontend</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Biblioteca</h1>
+    </header>
+
+    <main>
+        <section class="controls">
+            <button id="btn-load">Carregar livros</button>
+        </section>
+
+        <section id="book-list" class="book-list">
+            <!-- Lista de livros será renderizada aqui -->
+        </section>
+
+        <section class="form-section">
+            <h2>Adicionar livro</h2>
+            <form id="book-form">
+                <input name="titulo" placeholder="Título" required />
+                <input name="autor" placeholder="Autor" required />
+                <input name="isbn" placeholder="ISBN" />
+                <button type="submit">Salvar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="/js/app.js"></script>
+    <script>
+        // Ligação simples entre o DOM e as funções em /js/app.js
+        document.getElementById('btn-load').addEventListener('click', () => renderBookList('book-list'));
+
+        const form = document.getElementById('book-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(form));
+            try {
+                await createBook({ titulo: data.titulo, autor: data.autor, isbn: data.isbn });
+                form.reset();
+                renderBookList('book-list');
+            } catch (err) {
+                console.error(err);
+                alert('Erro ao cadastrar livro');
+            }
+        });
+
+        // Carrega automaticamente ao abrir a página
+        window.addEventListener('load', () => renderBookList('book-list'));
+    </script>
+</body>
+</html>

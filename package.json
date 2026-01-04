@@ -1,0 +1,12 @@
+{
+  "name": "biblioteca-frontend",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.76.0"
+  },
+  "scripts": {
+    "build:sass": "sass --no-source-map src/main/resources/sass:src/main/resources/static/css --style=expanded",
+    "watch:sass": "sass --watch src/main/resources/sass:src/main/resources/static/css --style=expanded"
+  }
+}
